@@ -1,5 +1,6 @@
 import logging
 import wandb
+from logging import LogRecord
 
 class WandbHandler(logging.Handler):
   run:wandb.Run=None
@@ -16,13 +17,14 @@ class WandbHandler(logging.Handler):
     else:
       self.run = wandb.init(project=project,config=config)
     
-  def emit(self,record):
+  def emit(self,record:LogRecord):
     variable_name = record.__dict__["_ATLOGGER_VARIABLENAME"]
-    if len(variable_name) == record.msg:
-      print("equal")
+    if type(record.msg) == tuple and len(variable_name) == len(record.msg):
       output = dict(zip(variable_name,record.msg))
-      #TODO add to run.log
-    self.run.log({record.__dict__["_ATLOGGER_VARIABLENAME"]:record.msg})#,**record.__dict__["kwargs"])
+      self.run.log(output)
+    else:
+      self.run.log({variable_name[0]:record.msg})
+
   def close(self):
     self.run.finish()
     super().close()
