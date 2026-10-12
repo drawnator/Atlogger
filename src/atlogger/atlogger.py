@@ -22,7 +22,8 @@ def log(*logargs,format:callable=None,level=logging.INFO,flush=True,**logkwargs)
   Args:
   *logargs: positional arguments used no name each output of the target function
   format: a callable that receives an objects and returns a loggable field e.g.:
-    `format=lambda x:x._repr_()` or `format=len`
+    `format=lambda x:x._repr_()` or `format=len`. beware this is not the same as logging.Formater
+    and is designed to extract attributes and do operations over non standard classes before logging.
   level: log level, can be used interchangeably with python default library logging enum 
           however the ones in this  package have names better fitting for this context 
   flush: not implemented yet
@@ -44,8 +45,3 @@ def log(*logargs,format:callable=None,level=logging.INFO,flush=True,**logkwargs)
   if len(logargs) > 0 and callable(logargs[0]):
     return decorator(logargs[0])
   return decorator
-
-
-# with open("src/sample_config.json","r") as config_file:
-#   config = json.load(config_file)
-# logging.config.dictConfig(config)
