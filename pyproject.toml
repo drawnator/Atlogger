@@ -1,6 +1,6 @@
 [project]
 name="atlogger"
-version = "0.2.1"
+version = "0.2.3"
 authors = [
   { name="Guilherme Toledo", email="toledo@guilherme.zip" },
 ]
@@ -15,6 +15,9 @@ license = "CC0-1.0"
 license-files = ["LICEN[CS]E*"]
 
 dependencies = []
+
+[project.urls]
+Repository = "https://github.com/drawnator/Atlogger"
 
 [project.optional-dependencies]
 wandb = [
