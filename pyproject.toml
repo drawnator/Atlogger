@@ -16,9 +16,6 @@ license-files = ["LICEN[CS]E*"]
 
 dependencies = []
 
-[project.urls]
-Repository = "https://github.com/drawnator/Atlogger"
-
 [project.optional-dependencies]
 wandb = [
     "wandb"
@@ -27,7 +24,10 @@ mlflow = [
     "mlflow"
 ]
 [project.urls]
-Homepage = "https://github.com/drawnator/atlog"
+Homepage = "https://github.com/drawnator/Atlogger"
+Documentation = "https://github.com/drawnator/Atlogger"
+Repository = "https://github.com/drawnator/Atlogger"
+
 
 [project.scripts]
 atlogger = "atlogger:main"
